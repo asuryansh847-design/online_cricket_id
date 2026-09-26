@@ -24,7 +24,7 @@ import {
 import "./App.css";
 
 const whatsappUrl =
-  "https://wa.me/919876543210?text=Hi%20BetIDWorld%2C%20I%20want%20to%20get%20a%20Betting%20ID.";
+  "https://wa.me/15550001234?text=Hi%20BetIDWorld%2C%20I%20want%20to%20get%20a%20Betting%20ID.";
 const stats = [
   [Users, "2,00,000+", "Active Users Across India"],
   [Clock3, "5-Minute", "Fast ID Activation"],
@@ -325,6 +325,7 @@ function App() {
           <button
             className="menu-toggle"
             aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={21} /> : <Menu size={21} />}
@@ -544,18 +545,19 @@ function App() {
               <br className="desktop-break" /> Betting ID Provider
             </h2>
           </div>
-          <div className="trust-grid">
+          <div className="info-list trust-list">
             {trustPoints.map(([title, body, Icon]) => (
               <motion.article
-                className="glass-card trust-card"
-                whileHover={{ y: -5 }}
+                className="info-row trust-row"
                 key={title}
               >
-                <span className="icon-orb">
+                <span className="info-icon">
                   <Icon size={22} />
                 </span>
-                <h3>{title}</h3>
-                <p>{body}</p>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
               </motion.article>
             ))}
           </div>
@@ -575,26 +577,18 @@ function App() {
               <br className="desktop-break" /> Needs
             </h2>
           </div>
-          <div className="id-grid">
+          <div className="info-list id-list">
             {idTypes.map(([title, body, Icon, tone]) => (
               <motion.article
-                className={`glass-card id-card ${tone}`}
-                whileHover={{ y: -5 }}
+                className={`info-row id-row ${tone}`}
                 key={title}
               >
-                <div className="card-top">
-                  <span className="icon-orb">
-                    <Icon size={21} />
-                  </span>
-                  <span className="verified-pill">
-                    <BadgeCheck size={12} /> VERIFIED
-                  </span>
+                <span className="info-icon"><Icon size={21} /></span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                  <a href={whatsappUrl}>Get this ID <ArrowRight size={15} /></a>
                 </div>
-                <h3>{title}</h3>
-                <p>{body}</p>
-                <a href={whatsappUrl}>
-                  Get this ID <ArrowRight size={15} />
-                </a>
               </motion.article>
             ))}
           </div>
@@ -619,7 +613,7 @@ function App() {
                 <div className="step-icon">
                   <Icon size={21} />
                 </div>
-                <div className="step-card">
+                <div className="step-copy">
                   <b>STEP {index + 1}</b>
                   <h3>{title}</h3>
                   <p>{body}</p>
@@ -656,22 +650,20 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="payment-notes">
+          <div className="info-list payment-notes">
             <div>
-              <Sparkles size={18} />
-              <strong>Deposits in Under 60 Seconds</strong>
-              <p>
-                UPI and IMPS deposits reflect instantly, so you never miss the
-                start of a match.
-              </p>
+              <span className="info-icon"><Sparkles size={18} /></span>
+              <div>
+                <strong>Deposits in Under 60 Seconds</strong>
+                <p>UPI and IMPS deposits reflect instantly, so you never miss the start of a match.</p>
+              </div>
             </div>
             <div>
-              <ShieldCheck size={18} />
-              <strong>Withdrawals Without Middlemen</strong>
-              <p>
-                Cash out directly to your bank — no brokers, no deductions, no
-                waiting games.
-              </p>
+              <span className="info-icon"><ShieldCheck size={18} /></span>
+              <div>
+                <strong>Withdrawals Without Middlemen</strong>
+                <p>Cash out directly to your bank — no brokers, no deductions, no waiting games.</p>
+              </div>
             </div>
           </div>
           <a className="whatsapp-button centered-cta" href={whatsappUrl}>
@@ -737,7 +729,7 @@ function App() {
               the important details in one place.
             </p>
           </div>
-          <div className="coverage-grid">
+          <div className="info-list coverage-list">
             <article>
               <CalendarDays size={22} />
               <h3>Season calendars</h3>
@@ -812,7 +804,7 @@ function App() {
               </div>
               <div className="policy-grid">
                 {policy.items.map(([title, body], index) => (
-                  <div className="policy-card" key={title}>
+                  <div className="policy-item" key={title}>
                     <span>0{index + 1}</span>
                     <div>
                       <h3>{title}</h3>
